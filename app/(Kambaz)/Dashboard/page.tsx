@@ -25,7 +25,7 @@ export default function Dashboard() {
         </div>
 
         <div className="wd-dashboard-course">
-          <Link href="/Courses/3456" className="wd-dashboard-course-link">
+          <Link href="/Courses/2345" className="wd-dashboard-course-link">
             <Image
               src="/images/pdp.jpg"
               width={200}
@@ -43,7 +43,7 @@ export default function Dashboard() {
         </div>
 
         <div className="wd-dashboard-course">
-          <Link href="/Courses/8901" className="wd-dashboard-course-link">
+          <Link href="/Courses/3456" className="wd-dashboard-course-link">
             <Image
               src="/images/mlops.jpg"
               width={200}
@@ -61,7 +61,7 @@ export default function Dashboard() {
         </div>
 
         <div className="wd-dashboard-course">
-          <Link href="/Courses/6789" className="wd-dashboard-course-link">
+          <Link href="/Courses/4567" className="wd-dashboard-course-link">
             <Image
               src="/images/ai.jpg"
               width={200}
@@ -79,7 +79,7 @@ export default function Dashboard() {
         </div>
 
         <div className="wd-dashboard-course">
-          <Link href="/Courses/2345" className="wd-dashboard-course-link">
+          <Link href="/Courses/5678" className="wd-dashboard-course-link">
             <Image
               src="/images/golang.jpg"
               width={200}
@@ -97,7 +97,7 @@ export default function Dashboard() {
         </div>
 
         <div className="wd-dashboard-course">
-          <Link href="/Courses/4567" className="wd-dashboard-course-link">
+          <Link href="/Courses/6789" className="wd-dashboard-course-link">
             <Image
               src="/images/dbms.jpg"
               width={200}
@@ -115,7 +115,7 @@ export default function Dashboard() {
         </div>
 
         <div className="wd-dashboard-course">
-          <Link href="/Courses/5678" className="wd-dashboard-course-link">
+          <Link href="/Courses/7890" className="wd-dashboard-course-link">
             <Image
               src="/images/compsystems.jpg"
               width={200}
