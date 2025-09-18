@@ -193,36 +193,40 @@ export default function Lab1() {
           <label htmlFor="wd-text-fields-password">Password:</label>
           <input
             type="password"
-            value="123@#$asd"
+            defaultValue="123@#$asd"
             id="wd-text-fields-password"
           />
           <br />
           <label htmlFor="wd-text-fields-first-name">First name:</label>
-          <input type="text" title="John" id="wd-text-fields-first-name" />{" "}
+          <input type="text" title="John" id="wd-text-fields-first-name" />
           <br />
           <label htmlFor="wd-text-fields-last-name">Last name:</label>
           <input
             type="text"
             placeholder="Doe"
-            value="Wonderland"
+            defaultValue="Wonderland"
             title="The last name"
             id="wd-text-fields-last-name"
           />
           <h5>Text boxes</h5>
           <label>Biography:</label>
           <br />
-          <textarea id="wd-textarea" cols={30} rows={10}>
+          <textarea id="wd-textarea" cols={30} rows={10} defaultValue="
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
             aliquip ex ea commodo consequat. Duis aute irure dolor in
             reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
             pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
+            culpa qui officia deserunt mollit anim id est laborum.">
           </textarea>
 
           <h5 id="wd-buttons">Buttons</h5>
           <Button />
+          <br />
+
+          <br />
+          <input type="file" id="wd-file-upload" />
 
           <h5 id="wd-radio-buttons">Radio buttons</h5>
           <label>Favorite movie genre:</label>
@@ -256,10 +260,10 @@ export default function Lab1() {
           <h5>Select one</h5>
           <label htmlFor="wd-select-one-genre"> Favorite movie genre: </label>
           <br />
-          <select id="wd-select-one-genre">
+          <select id="wd-select-one-genre" defaultValue="SCIFI">
             <option value="COMEDY">Comedy</option>
             <option value="DRAMA">Drama</option>
-            <option selected value="SCIFI">
+            <option value="SCIFI">
               Science Fiction
             </option>
             <option value="FANTASY">Fantasy</option>
@@ -267,15 +271,13 @@ export default function Lab1() {
           <h5>Select many</h5>
           <label htmlFor="wd-select-many-genre"> Favorite movie genres: </label>
           <br />
-          <select multiple id="wd-select-many-genre">
-            <option value="COMEDY" selected>
-              {" "}
-              Comedy{" "}
+          <select multiple id="wd-select-many-genre" defaultValue={["COMEDY", "SCIFI"]}>
+            <option value="COMEDY" >
+              Comedy
             </option>
             <option value="DRAMA"> Drama </option>
-            <option value="SCIFI" selected>
-              {" "}
-              Science Fiction{" "}
+            <option value="SCIFI">
+              Science Fiction
             </option>
             <option value="FANTASY"> Fantasy </option>
           </select>
@@ -290,7 +292,7 @@ export default function Lab1() {
           <label htmlFor="wd-text-fields-salary-start"> Starting salary:</label>
           <input
             type="number"
-            value="100000"
+            defaultValue="100000"
             placeholder="1000"
             id="wd-text-fields-salary-start"
           />
@@ -298,14 +300,14 @@ export default function Lab1() {
           <label htmlFor="wd-text-fields-rating"> Rating: </label>
           <input
             type="range"
-            value="4"
+            defaultValue="4"
             max="5"
             placeholder="Doe"
             id="wd-text-fields-rating"
           />
           <br />
           <label htmlFor="wd-text-fields-dob"> Date of birth: </label>
-          <input type="date" value="2000-01-21" id="wd-text-fields-dob" />
+          <input type="date" defaultValue="2000-01-21" id="wd-text-fields-dob" />
           <br />
           <h4>Anchor tag</h4>
           Please
