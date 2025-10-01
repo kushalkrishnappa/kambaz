@@ -6,6 +6,7 @@ import ForegroundColors from "./ForegroundColors";
 import Margins from "./Margins";
 import Padding from "./Padding";
 import "./page.css";
+import Position from "./Position";
 
 export default function Lab2() {
   return (
@@ -81,6 +82,8 @@ export default function Lab2() {
       <Corners />
 
       <Dimension />
+
+      <Position />
     </div>
   );
 }
