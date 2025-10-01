@@ -1,4 +1,4 @@
-import { FormControl, FormLabel, FormSelect } from "react-bootstrap";
+import { FormCheck, FormControl, FormLabel, FormSelect } from "react-bootstrap";
 
 export default function BootstrapForms() {
   return (
@@ -20,6 +20,32 @@ export default function BootstrapForms() {
           <option value="2">Two</option>
           <option value="3">Three</option>
         </FormSelect>
+      </div>
+      
+      <div id="wd-css-styling-switches">
+        <h3>Switches</h3>
+        <FormCheck
+          type="switch"
+          defaultChecked={false}
+          label="Unchecked switch checkbox input"
+        />
+        <FormCheck
+          type="switch"
+          defaultChecked={true}
+          label="Checked switch checkbox input"
+        />
+        <FormCheck
+          type="switch"
+          defaultChecked={false}
+          label="Unchecked disabled switch checkbox input"
+          disabled
+        />
+        <FormCheck
+          type="switch"
+          defaultChecked={true}
+          label="Checked disabled switch checkbox input"
+          disabled
+        />
       </div>
     </div>
   );
