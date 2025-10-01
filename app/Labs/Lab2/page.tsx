@@ -13,6 +13,7 @@ import "./page.css";
 import Positions from "./Positions";
 import ReactIconsSampler from "./ReactIcons";
 import Zindex from "./Zindex";
+import BootstrapGrids from "./BootstrapGrids";
 
 export default function Lab2() {
   return (
@@ -100,6 +101,8 @@ export default function Lab2() {
       <Flex />
 
       <ReactIconsSampler />
+
+      <BootstrapGrids />
     </Container>
   );
 }
