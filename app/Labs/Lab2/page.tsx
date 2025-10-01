@@ -1,6 +1,8 @@
 import BackgroundColors from "./BackgroundColors";
 import Borders from "./Borders";
 import ForegroundColors from "./ForegroundColors";
+import Margins from "./Margins";
+import Padding from "./Padding";
 import "./page.css";
 
 export default function Lab2() {
@@ -69,6 +71,10 @@ export default function Lab2() {
       <BackgroundColors />
 
       <Borders />
+
+      <Padding />
+
+      <Margins />
     </div>
   );
 }
