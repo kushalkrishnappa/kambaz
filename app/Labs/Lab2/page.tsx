@@ -16,6 +16,7 @@ import Zindex from "./Zindex";
 import BootstrapGrids from "./BootstrapGrids";
 import ScreenSizeLabel from "./ScreenSizeLabel";
 import BootstrapTables from "./BootstrapTables";
+import BootstrapLists from "./BootstrapLists";
 
 export default function Lab2() {
   return (
@@ -109,6 +110,8 @@ export default function Lab2() {
       <ScreenSizeLabel />
 
       <BootstrapTables />
+
+      <BootstrapLists />
     </Container>
   );
 }
