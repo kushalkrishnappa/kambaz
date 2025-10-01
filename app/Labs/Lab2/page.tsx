@@ -2,6 +2,7 @@ import BackgroundColors from "./BackgroundColors";
 import Borders from "./Borders";
 import Corners from "./Corners";
 import Dimension from "./Dimension";
+import Flex from "./Flex";
 import Float from "./Float";
 import ForegroundColors from "./ForegroundColors";
 import GridLayout from "./GridLayout";
@@ -93,6 +94,8 @@ export default function Lab2() {
       <Float />
 
       <GridLayout />
+
+      <Flex />
     </div>
   );
 }
