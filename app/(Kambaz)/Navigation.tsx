@@ -37,25 +37,25 @@ export default function KambazNavigation() {
         </Link>
       </ListGroupItem>
 
-      <ListGroupItem className={`border-0 text-center ${pathname.includes("/Dashboard") ? "bg-white" : "bg-black"}`}>
+      <ListGroupItem className={`border-0 text-center ${pathname === "/Dashboard" ? "bg-white" : "bg-black"}`}>
         <Link
           href="/Dashboard"
           id="wd-dashboard-link"
-          className={`text-decoration-none ${pathname.includes("/Dashboard") ? "text-danger" : "text-white"}`}
+          className={`text-decoration-none ${pathname === "/Dashboard" ? "text-danger" : "text-white"}`}
         >
-          <AiOutlineDashboard className={`fs-1 ${pathname.includes("/Dashboard") ? "text-danger" : "text-danger"}`} />
+          <AiOutlineDashboard className={`fs-1 ${pathname === "/Dashboard" ? "text-danger" : "text-danger"}`} />
           <br />
           Dashboard
         </Link>
       </ListGroupItem>
 
-      <ListGroupItem className={`border-0 text-center ${pathname.includes("/Courses") ? "bg-white" : "bg-black"}`}>
+      <ListGroupItem className={`border-0 text-center ${pathname.includes("/Courses") || pathname === "/Dashboard" ? "bg-white" : "bg-black"}`}>
         <Link
           href="/Dashboard"
           id="wd-courses-link"
-          className={`text-decoration-none ${pathname.includes("/Courses") ? "text-danger" : "text-white"}`}
+          className={`text-decoration-none ${pathname.includes("/Courses") || pathname === "/Dashboard" ? "text-danger" : "text-white"}`}
         >
-          <FaBook className={`fs-1 ${pathname.includes("/Dashboard") ? "text-danger" : "text-danger"}`} />
+          <FaBook className="fs-1 text-danger" />
           <br />
           Courses
         </Link>

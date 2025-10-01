@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import {
   Button,
   Card,
@@ -16,7 +15,7 @@ export default function Dashboard() {
       <h1 id="wd-dashboard-title">Dashboard</h1> <hr />
       <h2 id="wd-dashboard-published">Published Courses (10)</h2> <hr />
       <div id="wd-dashboard-courses">
-        <Row xs={1} md={5} className="g-4">
+        <Row xs={1} md={4} lg={4} xl={5} className="g-4" style={{ rowGap: "35px" }}>
           <Col className="wd-dashboard-course" style={{ width: "300px" }}>
             <Card>
               <Link
