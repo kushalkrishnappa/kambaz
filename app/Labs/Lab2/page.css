@@ -172,3 +172,10 @@ p#wd-id-selector-2 {
   top: 20px;
   left: 120px;
 }
+
+/* fixed position */
+.wd-pos-fixed {
+  position: fixed;
+  right: 0px;
+  bottom: 50%;
+}
