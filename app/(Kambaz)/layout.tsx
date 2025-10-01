@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import KambazNavigation from "./Navigation";
+import "./styles.css";
 
 export default function KambazLayout({
   children,
@@ -10,7 +11,9 @@ export default function KambazLayout({
         <div>
           <KambazNavigation />
         </div>
-        <div className="flex-fill">{children}</div>
+        <div className="wd-main-content-offset p-3 flex-fill">
+          {children}
+        </div>
       </div>
     </div>
   );
