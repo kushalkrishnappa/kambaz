@@ -141,7 +141,7 @@ p#wd-id-selector-2 {
   height: 75px;
 }
 
-/* position */
+/* relative position */
 .wd-pos-relative-nudge-up-right {
   position: relative;
   bottom: 30px;
@@ -154,4 +154,21 @@ p#wd-id-selector-2 {
 }
 .wd-pos-relative {
   position: relative;
+}
+
+/* absolute position */
+.wd-pos-absolute-10-10 {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+.wd-pos-absolute-50-50 {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+}
+.wd-pos-absolute-120-20 {
+  position: absolute;
+  top: 20px;
+  left: 120px;
 }
