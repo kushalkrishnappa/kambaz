@@ -4,6 +4,7 @@ import Corners from "./Corners";
 import Dimension from "./Dimension";
 import Float from "./Float";
 import ForegroundColors from "./ForegroundColors";
+import GridLayout from "./GridLayout";
 import Margins from "./Margins";
 import Padding from "./Padding";
 import "./page.css";
@@ -90,6 +91,8 @@ export default function Lab2() {
       <Zindex />
 
       <Float />
+
+      <GridLayout />
     </div>
   );
 }
