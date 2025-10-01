@@ -7,6 +7,7 @@ import Margins from "./Margins";
 import Padding from "./Padding";
 import "./page.css";
 import Positions from "./Positions";
+import Zindex from "./Zindex";
 
 export default function Lab2() {
   return (
@@ -84,6 +85,8 @@ export default function Lab2() {
       <Dimension />
 
       <Positions />
+
+      <Zindex />
     </div>
   );
 }
