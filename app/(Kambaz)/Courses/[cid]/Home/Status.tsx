@@ -3,6 +3,10 @@ import { FaCheckCircle } from "react-icons/fa";
 import { BiImport } from "react-icons/bi";
 import { LiaFileImportSolid } from "react-icons/lia";
 import { Button } from "react-bootstrap";
+import { FiTarget } from "react-icons/fi";
+import { IoBarChart, IoNotificationsOutline } from "react-icons/io5";
+import { HiOutlineSpeakerphone } from "react-icons/hi";
+import { FaChartColumn } from "react-icons/fa6";
 
 export default function CourseStatus() {
   return (
@@ -28,19 +32,19 @@ export default function CourseStatus() {
         <LiaFileImportSolid className="me-2 fs-5" /> Import from Commons{" "}
       </Button>
       <Button variant="secondary" size="lg" className="w-100 mt-1 text-start">
-        Choose Home Page
+        <FiTarget className="me-2 fs-5" /> Choose Home Page
       </Button>
       <Button variant="secondary" size="lg" className="w-100 mt-1 text-start">
-        View Course Stream
+        <IoBarChart className="me-2 fs-5" /> View Course Stream
       </Button>
       <Button variant="secondary" size="lg" className="w-100 mt-1 text-start">
-        New Announcement
+        <HiOutlineSpeakerphone className="me-2 fs-5" /> New Announcement
       </Button>
       <Button variant="secondary" size="lg" className="w-100 mt-1 text-start">
-        New Analytics
+        <FaChartColumn className="me-2 fs-5" />  New Analytics
       </Button>
       <Button variant="secondary" size="lg" className="w-100 mt-1 text-start">
-        View Course Notifications
+         <IoNotificationsOutline className="me-2 fs-5" /> View Course Notifications
       </Button>
     </div>
   );
