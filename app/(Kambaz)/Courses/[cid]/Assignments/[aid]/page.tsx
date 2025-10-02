@@ -6,11 +6,12 @@ import {
   FormSelect,
   FormCheck,
   Row,
+  Container,
 } from "react-bootstrap";
 
 export default function AssignmentEditor() {
   return (
-    <div id="wd-assignments-editor">
+    <Container>
       <FormLabel htmlFor="wd-name">Assignment Name</FormLabel>
       <FormControl
         id="wd-name"
@@ -182,6 +183,6 @@ The Kanbas application should include a link to navigate back to the landing pag
           Save
         </Button>
       </div>
-    </div>
+    </Container>
   );
 }

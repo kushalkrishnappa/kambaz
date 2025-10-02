@@ -1,9 +1,9 @@
-import { Table } from "react-bootstrap";
+import { Container, Table } from "react-bootstrap";
 import { FaUserCircle } from "react-icons/fa";
 
 export default function PeopleTable() {
   return (
-    <div id="wd-people-table">
+    <Container id="wd-people-table">
       <Table striped>
         <thead>
           <tr>
@@ -66,6 +66,6 @@ export default function PeopleTable() {
           </tr>
         </tbody>
       </Table>
-    </div>
+    </Container>
   );
 }

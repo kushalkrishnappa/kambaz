@@ -7,11 +7,13 @@ import {
   CardText,
   CardTitle,
   Col,
+  Container,
   Row,
 } from "react-bootstrap";
+
 export default function Dashboard() {
   return (
-    <div id="wd-dashboard">
+    <Container>
       <h1 id="wd-dashboard-title">Dashboard</h1> <hr />
       <h2 id="wd-dashboard-published">Published Courses (10)</h2> <hr />
       <div id="wd-dashboard-courses">
@@ -297,6 +299,6 @@ export default function Dashboard() {
           </Col>
         </Row>
       </div>
-    </div>
+    </Container>
   );
 }

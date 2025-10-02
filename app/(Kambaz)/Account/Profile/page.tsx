@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { FormControl, FormSelect } from "react-bootstrap";
+import { Container, FormControl, FormSelect } from "react-bootstrap";
 
 export default function Profile() {
   return (
-    <div id="wd-profile-screen" style={{ width: "300px" }}>
+    <Container id="wd-profile" className="w-25">
       <h3>Profile</h3>
       <FormControl
         id="wd-username"
@@ -54,6 +54,6 @@ export default function Profile() {
       >
         Signout
       </Link>
-    </div>
+    </Container>
   );
 }

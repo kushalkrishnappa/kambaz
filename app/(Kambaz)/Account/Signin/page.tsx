@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { FormControl } from "react-bootstrap";
+import { Container, FormControl } from "react-bootstrap";
 
 export default function Signin() {
   return (
-    <div id="wd-signin-screen" style={{ width: "300px" }}>
+    <Container id="wd-signin" className="w-25">
       <h1>Sign in</h1>
       <FormControl id="wd-username" placeholder="username" className="mb-2" />
       <FormControl
@@ -22,6 +22,6 @@ export default function Signin() {
       <Link id="wd-signup-link" href="Signup">
         Signup
       </Link>
-    </div>
+    </Container>
   );
 }

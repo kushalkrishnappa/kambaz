@@ -6,15 +6,17 @@ import {
   ListGroup,
   ListGroupItem,
   Badge,
+  Container,
 } from "react-bootstrap";
 import { BsGripVertical, BsPlus } from "react-icons/bs";
 import { IoEllipsisVertical, IoSearch } from "react-icons/io5";
+import { IoMdArrowDropdown } from "react-icons/io";
 import { FaCheckCircle } from "react-icons/fa";
 import { RxFileText } from "react-icons/rx";
 
 export default function Assignments() {
   return (
-    <div id="wd-assignments">
+    <Container id="wd-assignments">
       <div className="d-flex justify-content-between align-items-center mb-4">
         <div className="float-start" style={{ width: "300px" }}>
           <InputGroup className="border rounded">
@@ -47,6 +49,7 @@ export default function Assignments() {
           <div className="wd-title p-3 ps-2 bg-secondary d-flex justify-content-between align-items-center">
             <div className="d-flex align-items-center">
               <BsGripVertical className="me-2 fs-3" />
+              <IoMdArrowDropdown className="me-2 fs-4" />
               <strong>ASSIGNMENTS</strong>
             </div>
             <div className="d-flex align-items-center">
@@ -143,6 +146,6 @@ export default function Assignments() {
           </ListGroup>
         </ListGroupItem>
       </ListGroup>
-    </div>
+    </Container>
   );
 }
