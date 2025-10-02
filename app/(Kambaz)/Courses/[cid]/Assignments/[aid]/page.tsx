@@ -36,7 +36,7 @@ The Kanbas application should include a link to navigate back to the landing pag
       />
 
       <Row className="mb-3">
-        <FormLabel column sm={2}>
+        <FormLabel column sm={2} className="wd-assignment-details-label">
           Points
         </FormLabel>
         <Col sm={10}>
@@ -45,7 +45,7 @@ The Kanbas application should include a link to navigate back to the landing pag
       </Row>
 
       <Row className="mb-3">
-        <FormLabel column sm={2}>
+        <FormLabel column sm={2} className="wd-assignment-details-label">
           Assignment Group
         </FormLabel>
         <Col sm={10}>
@@ -58,7 +58,7 @@ The Kanbas application should include a link to navigate back to the landing pag
       </Row>
 
       <Row className="mb-3">
-        <FormLabel column sm={2}>
+        <FormLabel column sm={2} className="wd-assignment-details-label">
           Display Grade as
         </FormLabel>
         <Col sm={10}>
@@ -70,7 +70,7 @@ The Kanbas application should include a link to navigate back to the landing pag
       </Row>
 
       <Row className="mb-3">
-        <FormLabel column sm={2}>
+        <FormLabel column sm={2} className="wd-assignment-details-label">
           Submission Type
         </FormLabel>
         <Col sm={10}>
@@ -87,27 +87,32 @@ The Kanbas application should include a link to navigate back to the landing pag
                   type="checkbox"
                   id="wd-text-entry"
                   label="Text Entry"
+                  className="m-2"
                 />
                 <FormCheck
                   type="checkbox"
                   id="wd-website-url"
                   label="Website URL"
+                  className="m-2"
                   defaultChecked
                 />
                 <FormCheck
                   type="checkbox"
                   id="wd-media-recordings"
                   label="Media Recordings"
+                  className="m-2"
                 />
                 <FormCheck
                   type="checkbox"
                   id="wd-student-annotation"
                   label="Student Annotation"
+                  className="m-2"
                 />
                 <FormCheck
                   type="checkbox"
                   id="wd-file-upload"
                   label="File Upload"
+                  className="m-2"
                 />
               </div>
             </div>
@@ -116,7 +121,7 @@ The Kanbas application should include a link to navigate back to the landing pag
       </Row>
 
       <Row className="mb-3">
-        <FormLabel column sm={2}>
+        <FormLabel column sm={2} className="wd-assignment-details-label">
           Assign
         </FormLabel>
         <Col sm={10}>
@@ -124,7 +129,7 @@ The Kanbas application should include a link to navigate back to the landing pag
             <FormLabel htmlFor="wd-assign-to">
               <strong>Assign to</strong>
             </FormLabel>
-            <FormSelect id="wd-assign-to" className="mb-3">
+            <FormSelect multiple id="wd-assign-to" className="mb-3">
               <option>Everyone</option>
               <option>Group 1</option>
               <option>Group 2</option>
