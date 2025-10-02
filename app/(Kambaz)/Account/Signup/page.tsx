@@ -5,11 +5,7 @@ export default function Signup() {
   return (
     <div id="wd-signup-screen" style={{ width: "300px" }}>
       <h3>Signup</h3>
-      <FormControl
-        id="wd-username"
-        placeholder="username"
-        className="mb-2"
-      />
+      <FormControl id="wd-username" placeholder="username" className="mb-2" />
       <FormControl
         id="wd-password"
         placeholder="password"
@@ -22,15 +18,10 @@ export default function Signup() {
         type="password"
         className="mb-2"
       />
-      <Link
-        href="/Account/Profile"
-        className="btn btn-primary w-100 mb-2"
-      >
+      <Link href="Profile" className="btn btn-primary w-100 mb-2">
         Signup
       </Link>
-      <Link href="/Account/Signin">
-        Signin
-      </Link>
+      <Link href="Signin">Signin</Link>
     </div>
   );
 }

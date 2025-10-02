@@ -14,13 +14,13 @@ export default function Signin() {
       />
       <Link
         id="wd-signin-btn"
-        href="/Account/Profile"
+        href="/Dashboard"
         className="btn btn-primary w-100 mb-2"
       >
-        Sign in{" "}
+        Sign in
       </Link>
-      <Link id="wd-signup-link" href="/Account/Signup">
-        Sign up
+      <Link id="wd-signup-link" href="Signup">
+        Signup
       </Link>
     </div>
   );
