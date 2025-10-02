@@ -4,7 +4,7 @@ import { Container, FormControl } from "react-bootstrap";
 export default function Signin() {
   return (
     <Container id="wd-signin" className="w-25">
-      <h1>Sign in</h1>
+      <h3>Sign in</h3>
       <FormControl id="wd-username" placeholder="username" className="mb-2" />
       <FormControl
         id="wd-password"
