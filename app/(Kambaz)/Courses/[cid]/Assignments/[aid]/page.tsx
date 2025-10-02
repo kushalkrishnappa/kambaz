@@ -12,7 +12,11 @@ export default function AssignmentEditor() {
   return (
     <div id="wd-assignments-editor">
       <FormLabel htmlFor="wd-name">Assignment Name</FormLabel>
-      <FormControl id="wd-name" defaultValue="A1 - ENV + HTML" className="mb-3" />
+      <FormControl
+        id="wd-name"
+        defaultValue="A1 - ENV + HTML"
+        className="mb-3"
+      />
 
       <FormControl
         as="textarea"
@@ -79,11 +83,32 @@ The Kanbas application should include a link to navigate back to the landing pag
             <div>
               <strong>Online Entry Options</strong>
               <div className="mt-2">
-                <FormCheck type="checkbox" id="wd-text-entry" label="Text Entry" />
-                <FormCheck type="checkbox" id="wd-website-url" label="Website URL" defaultChecked />
-                <FormCheck type="checkbox" id="wd-media-recordings" label="Media Recordings" />
-                <FormCheck type="checkbox" id="wd-student-annotation" label="Student Annotation" />
-                <FormCheck type="checkbox" id="wd-file-upload" label="File Upload" />
+                <FormCheck
+                  type="checkbox"
+                  id="wd-text-entry"
+                  label="Text Entry"
+                />
+                <FormCheck
+                  type="checkbox"
+                  id="wd-website-url"
+                  label="Website URL"
+                  defaultChecked
+                />
+                <FormCheck
+                  type="checkbox"
+                  id="wd-media-recordings"
+                  label="Media Recordings"
+                />
+                <FormCheck
+                  type="checkbox"
+                  id="wd-student-annotation"
+                  label="Student Annotation"
+                />
+                <FormCheck
+                  type="checkbox"
+                  id="wd-file-upload"
+                  label="File Upload"
+                />
               </div>
             </div>
           </div>
@@ -109,20 +134,33 @@ The Kanbas application should include a link to navigate back to the landing pag
             <FormLabel htmlFor="wd-due-date">
               <strong>Due</strong>
             </FormLabel>
-            <FormControl type="date" id="wd-due-date" defaultValue="2023-10-20" className="mb-3" />
+            <FormControl
+              type="date"
+              id="wd-due-date"
+              defaultValue="2023-10-20"
+              className="mb-3"
+            />
 
             <Row>
               <Col sm={6}>
                 <FormLabel htmlFor="wd-available-from">
                   <strong>Available From</strong>
                 </FormLabel>
-                <FormControl type="date" id="wd-available-from" defaultValue="2023-10-01" />
+                <FormControl
+                  type="date"
+                  id="wd-available-from"
+                  defaultValue="2023-10-01"
+                />
               </Col>
               <Col sm={6}>
                 <FormLabel htmlFor="wd-available-until">
                   <strong>Until</strong>
                 </FormLabel>
-                <FormControl type="date" id="wd-available-until" defaultValue="2023-10-21" />
+                <FormControl
+                  type="date"
+                  id="wd-available-until"
+                  defaultValue="2023-10-21"
+                />
               </Col>
             </Row>
           </div>
