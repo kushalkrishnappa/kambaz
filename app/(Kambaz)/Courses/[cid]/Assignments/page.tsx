@@ -16,18 +16,24 @@ export default function Assignments() {
   return (
     <div id="wd-assignments">
       <div className="d-flex justify-content-between align-items-center mb-4">
-        <InputGroup className="border rounded" style={{ width: "300px" }}>
-          {/* <InputGroup.Text className="bg-white border-0">
-            <IoSearch />
-          </InputGroup.Text> */}
-          <FormControl
-            placeholder="Search..."
-            id="wd-search-assignment"
-            className="border-0"
-          />
-        </InputGroup>
+        <div className="float-start" style={{ width: "300px" }}>
+          <InputGroup className="border rounded">
+            <span className="input-group-text bg-white border-0">
+              <IoSearch />
+            </span>
+            <FormControl
+              placeholder="Search..."
+              id="wd-search-assignment"
+              className="border-0"
+            />
+          </InputGroup>
+        </div>
         <div>
-          <Button variant="secondary" className="me-2" id="wd-add-assignment-group">
+          <Button
+            variant="secondary"
+            className="me-2"
+            id="wd-add-assignment-group"
+          >
             <BsPlus className="fs-4" /> Group
           </Button>
           <Button variant="danger" id="wd-add-assignment">
@@ -44,7 +50,11 @@ export default function Assignments() {
               <strong>ASSIGNMENTS</strong>
             </div>
             <div className="d-flex align-items-center">
-              <Badge bg="light" text="dark" className="me-2 rounded-pill px-3 py-2">
+              <Badge
+                bg="light"
+                text="dark"
+                className="me-2 rounded-pill px-3 py-2"
+              >
                 40% of Total
               </Badge>
               <BsPlus className="fs-4" />
