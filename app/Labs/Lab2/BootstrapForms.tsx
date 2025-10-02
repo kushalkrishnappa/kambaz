@@ -84,8 +84,7 @@ export default function BootstrapForms() {
         <h3>Responsive forms</h3>
         <Row className="mb-3" controlId="email1">
           <FormLabel column sm={2}>
-            {" "}
-            Email{" "}
+            Email
           </FormLabel>
           <Col sm={10}>
             <FormControl type="email" defaultValue="email@example.com" />
@@ -93,8 +92,7 @@ export default function BootstrapForms() {
         </Row>
         <Row className="mb-3" controlId="password1">
           <FormLabel column sm={2}>
-            {" "}
-            Password{" "}
+            Password
           </FormLabel>
           <Col sm={10}>
             <FormControl type="password" />
@@ -102,8 +100,7 @@ export default function BootstrapForms() {
         </Row>
         <Row className="mb-3" controlId="textarea2">
           <FormLabel column sm={2}>
-            {" "}
-            Bio{" "}
+            Bio
           </FormLabel>
           <Col sm={10}>
             <FormControl as="textarea" style={{ height: "100px" }} />
@@ -115,29 +112,24 @@ export default function BootstrapForms() {
           <Form>
             <Row className="mb-3" controlId="formHorizontalEmail">
               <FormLabel column sm={2}>
-                {" "}
-                Email{" "}
+                Email
               </FormLabel>
               <Col sm={10}>
-                {" "}
-                <FormControl type="email" placeholder="Email" />{" "}
+                <FormControl type="email" placeholder="Email" />
               </Col>
             </Row>
             <Row className="mb-3" controlId="formHorizontalPassword">
               <FormLabel column sm={2}>
-                {" "}
-                Password{" "}
+                Password
               </FormLabel>
               <Col sm={10}>
-                {" "}
-                <FormControl type="password" placeholder="Password" />{" "}
+                <FormControl type="password" placeholder="Password" />
               </Col>
             </Row>
             <fieldset>
               <Row className="mb-3">
                 <FormLabel as="legend" column sm={2}>
-                  {" "}
-                  Radios{" "}
+                  Radios
                 </FormLabel>
                 <Col sm={10}>
                   <FormCheck
@@ -165,8 +157,7 @@ export default function BootstrapForms() {
               </Row>
             </fieldset>
             <Col>
-              {" "}
-              <Button type="submit">Sign in</Button>{" "}
+              <Button type="submit">Sign in</Button>
             </Col>
           </Form>
         </div>
