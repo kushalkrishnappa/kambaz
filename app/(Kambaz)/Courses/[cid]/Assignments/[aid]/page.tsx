@@ -1,3 +1,7 @@
+"use client";
+import Link from "next/link";
+import { useParams } from "next/navigation";
+import * as db from "../../../../Database";
 import {
   Button,
   Col,
@@ -10,12 +14,19 @@ import {
 } from "react-bootstrap";
 
 export default function AssignmentEditor() {
+  const { cid, aid } = useParams();
+  const assignment = db.assignments.find((a: any) => a._id === aid);
+
+  if (!assignment) {
+    return <Container><p>Assignment not found</p></Container>;
+  }
+
   return (
     <Container>
       <FormLabel htmlFor="wd-name">Assignment Name</FormLabel>
       <FormControl
         id="wd-name"
-        defaultValue="A1 - ENV + HTML"
+        defaultValue={assignment.title}
         className="mb-3"
       />
 
@@ -24,16 +35,7 @@ export default function AssignmentEditor() {
         id="wd-description"
         rows={10}
         className="mb-3"
-        defaultValue={`The assignment is available online Submit a link to the landing page of your Web application running on Netlify.
-
-The landing page should include the following:
-
-• Your full name and section
-• Links to each of the lab assignments
-• Link to the Kanbas application
-• Links to all relevant source code repositories
-
-The Kanbas application should include a link to navigate back to the landing page.`}
+        defaultValue={assignment.description}
       />
 
       <Row className="mb-3">
@@ -41,7 +43,7 @@ The Kanbas application should include a link to navigate back to the landing pag
           Points
         </FormLabel>
         <Col sm={10}>
-          <FormControl id="wd-points" defaultValue={100} type="number" />
+          <FormControl id="wd-points" defaultValue={assignment.points} type="number" />
         </Col>
       </Row>
 
@@ -141,21 +143,21 @@ The Kanbas application should include a link to navigate back to the landing pag
               <strong>Due</strong>
             </FormLabel>
             <FormControl
-              type="date"
+              type="datetime-local"
               id="wd-due-date"
-              defaultValue="2023-10-20"
+              defaultValue={assignment.dueDate}
               className="mb-3"
             />
 
             <Row>
               <Col sm={6}>
                 <FormLabel htmlFor="wd-available-from">
-                  <strong>Available From</strong>
+                  <strong>Available from</strong>
                 </FormLabel>
                 <FormControl
-                  type="date"
+                  type="datetime-local"
                   id="wd-available-from"
-                  defaultValue="2023-10-01"
+                  defaultValue={assignment.availableDate}
                 />
               </Col>
               <Col sm={6}>
@@ -163,9 +165,9 @@ The Kanbas application should include a link to navigate back to the landing pag
                   <strong>Until</strong>
                 </FormLabel>
                 <FormControl
-                  type="date"
+                  type="datetime-local"
                   id="wd-available-until"
-                  defaultValue="2023-10-21"
+                  defaultValue={assignment.untilDate}
                 />
               </Col>
             </Row>
@@ -176,12 +178,16 @@ The Kanbas application should include a link to navigate back to the landing pag
       <hr />
 
       <div className="text-end">
-        <Button variant="secondary" className="me-2" id="wd-cancel-assignment">
-          Cancel
-        </Button>
-        <Button variant="danger" id="wd-save-assignment">
-          Save
-        </Button>
+        <Link href={`/Courses/${cid}/Assignments`}>
+          <Button variant="secondary" className="me-2" id="wd-cancel-assignment">
+            Cancel
+          </Button>
+        </Link>
+        <Link href={`/Courses/${cid}/Assignments`}>
+          <Button variant="danger" id="wd-save-assignment">
+            Save
+          </Button>
+        </Link>
       </div>
     </Container>
   );
