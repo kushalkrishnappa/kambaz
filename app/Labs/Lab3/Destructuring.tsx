@@ -9,14 +9,14 @@ export default function Destructuring() {
     <div id="wd-destructuring">
       <h2>Destructuring</h2>
       <h3>Object Destructuring</h3>
-      const &#123; name, age &#125; = &#123; name: "John", age: 25 &#125;<br />
-      name = &#123;name&#125;<br />
-      age = &#123;age&#125;
+      const &#123; name, age &#125; = &#123; name: &quot;John&quot;, age: 25 &#125;<br />
+      name = {name}<br />
+      age = {age}
       <h3>Array Destructuring</h3>
-      const [first, second, third] = ["one", "two", "three"]<br /><br />
-      first = &#123;first&#125;<br />
-      second = &#123;second&#125;<br />
-      third = &#123;third&#125;<br />
+      const [first, second, third] = [&quot;one&quot;, &quot;two&quot;, &quot;three&quot;]<br /><br />
+      first = {first}<br />
+      second = {second}<br />
+      third = {third}<br />
     </div>
   );
 }
