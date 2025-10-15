@@ -14,6 +14,12 @@ import ArrayIndexAndLength from "./ArrayIndexAndLength";
 import AddingAndRemovingToFromArrays from "./AddingAndRemovingToFromArrays";
 import ForLoops from "./ForLoops";
 import MapFunction from "./MapFunction";
+import FindFunction from "./FindFunction";
+import FindIndex from "./FindIndex";
+import FilterFunction from "./FilterFunction";
+import JsonStringify from "./JsonStringify";
+import House from "./House";
+import Spreader from "./Spreader";
 
 export default function Lab3() {
   return (
@@ -39,6 +45,13 @@ export default function Lab3() {
       <AddingAndRemovingToFromArrays />
       <ForLoops />
       <MapFunction />
+
+      <FindFunction />
+      <FindIndex />
+      <FilterFunction />
+      <JsonStringify />
+      <House />
+      <Spreader />
 
     </div>
   );
