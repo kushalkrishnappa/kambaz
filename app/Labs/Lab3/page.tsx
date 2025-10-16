@@ -30,11 +30,12 @@ import Square from "./Square";
 import Highlight from "./Highlight";
 import PathParameters from "./PathParameters";
 import TodoList from "./todos/TodoList";
+import { Container } from "react-bootstrap";
 
 export default function Lab3() {
   console.log('Hello World!');
   return (
-    <div>
+    <Container className="mt-3">
       <h2>Lab 3</h2>
       <VariablesAndConstants />
       <VariableTypes  />
@@ -76,8 +77,9 @@ export default function Lab3() {
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipitratione eaque illo minus cum, saepe totam
         vel nihil repellat nemo explicabo excepturi consectetur. Modi omnis minus sequi maiores, provident voluptates
       </Highlight>
+      <hr />
       <PathParameters />
       <TodoList />
-    </div>
+    </Container>
   );
 }
