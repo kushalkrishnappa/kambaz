@@ -16,7 +16,7 @@ export default function Destructuring() {
       const [first, second, third] = [&quot;one&quot;, &quot;two&quot;, &quot;three&quot;]<br /><br />
       first = {first}<br />
       second = {second}<br />
-      third = {third}<br />
+      third = {third}<br /> <hr />
     </div>
   );
 }
