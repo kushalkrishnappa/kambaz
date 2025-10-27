@@ -1,7 +1,7 @@
 export default function Piazza() {
   return (
     <div>
-      <h1>Piazza</h1>
+      <p>This is the Piazza page for the course.</p>
     </div>
   );
 }

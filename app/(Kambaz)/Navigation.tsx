@@ -1,38 +1,39 @@
 "use client";
+
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ListGroup, ListGroupItem } from "react-bootstrap";
+import { ListGroup } from "react-bootstrap";
 import { AiOutlineDashboard } from "react-icons/ai";
-import { FaRegCalendarAlt, FaInbox } from "react-icons/fa";
-import { FaBook, FaRegCircleUser, FaLink } from "react-icons/fa6";
-
+import { BiBook, BiCalendar } from "react-icons/bi";
+import { FaRegCircleUser } from "react-icons/fa6";
+import { HiMiniInboxArrowDown } from "react-icons/hi2";
+import { IoIosCodeWorking } from "react-icons/io";
 export default function KambazNavigation() {
   const pathname = usePathname();
   const links = [
     { label: "Dashboard", path: "/Dashboard", icon: AiOutlineDashboard },
-    { label: "Courses", path: "/Dashboard", icon: FaBook },
-    { label: "Calendar", path: "/Calendar", icon: FaRegCalendarAlt },
-    { label: "Inbox", path: "/Inbox", icon: FaInbox },
-    { label: "Labs", path: "/Labs", icon: FaLink },
+    { label: "Course", path: "/Dashboard", icon: BiBook },
+    { label: "Calendar", path: "/Calendar", icon: BiCalendar },
+    { label: "Inbox", path: "/Inbox", icon: HiMiniInboxArrowDown },
+    { label: "Labs", path: "/Labs", icon: IoIosCodeWorking },
   ];
-
   return (
     <ListGroup
-      id="wd-kambaz-navigation"
-      style={{ width: 120 }}
       className="rounded-0 position-fixed bottom-0 top-0 d-none d-md-block bg-black z-2"
+      style={{ width: 110 }}
+      id="wd-kambaz-navigation"
     >
-      <ListGroupItem
-        id="wd-neu-link"
+      <ListGroup.Item
+        className="bg-black border-0 text-center"
+        as="a"
         target="_blank"
         href="https://www.northeastern.edu/"
-        action
-        className="bg-black border-0 text-center"
+        id="wd-neu-link"
       >
-        <img src="/images/NEU.png" width="75px" />
-      </ListGroupItem>
-
-      <ListGroupItem
+        <img src="/images/NEU.png" width="75px" alt="Northeastern University" />
+      </ListGroup.Item>
+      <ListGroup.Item
         as={Link}
         href="/Account"
         className={`text-center border-0 bg-black
@@ -49,10 +50,9 @@ export default function KambazNavigation() {
         />
         <br />
         Account
-      </ListGroupItem>
-      
+      </ListGroup.Item>
       {links.map((link) => (
-        <ListGroupItem
+        <ListGroup.Item
           key={link.label}
           as={Link}
           href={link.path}
@@ -66,7 +66,7 @@ export default function KambazNavigation() {
           {link.icon({ className: "fs-1 text-danger" })}
           <br />
           {link.label}
-        </ListGroupItem>
+        </ListGroup.Item>
       ))}
     </ListGroup>
   );

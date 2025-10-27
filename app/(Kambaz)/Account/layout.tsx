@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
 import AccountNavigation from "./Navigation";
-
 export default function AccountLayout({
   children,
 }: Readonly<{ children: ReactNode }>) {

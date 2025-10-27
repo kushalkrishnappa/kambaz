@@ -1,7 +1,3 @@
-export default function Lab2() {
-  return (
-    <div>
-      <h2>Calendar</h2>
-    </div>
-  );
+export default function Calendar() {
+  return <h1>Calendar Page</h1>;
 }
