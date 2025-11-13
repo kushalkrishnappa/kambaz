@@ -25,14 +25,8 @@ export default function AssignmentEditor() {
   );
 
   const onCreateAssignmentForCourse = async () => {
-    const newAssignment = {
-      title: assignmentState.title,
-      description: assignmentState.description,
-      points: assignmentState.points,
-      course: cid,
-    };
-    await client.createAssignmentForCourse(cid as string, newAssignment);
-    dispatch(addAssignment(newAssignment));
+    await client.createAssignmentForCourse(cid as string, assignmentState);
+    dispatch(addAssignment(assignmentState));
     redirect(`/Courses/${cid}/Assignments/`);
   };
 
