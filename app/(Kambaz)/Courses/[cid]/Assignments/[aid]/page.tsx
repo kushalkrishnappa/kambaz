@@ -15,7 +15,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { addAssignment, updateAssignment } from "../reducer";
 import { useState } from "react";
-
+import * as client from "../../../client";
 export default function AssignmentEditor() {
   const { cid, aid } = useParams();
   const dispatch = useDispatch();
@@ -23,6 +23,24 @@ export default function AssignmentEditor() {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (state: any) => state.assignmentsReducer
   );
+
+  const onCreateAssignmentForCourse = async () => {
+    const newAssignment = {
+      title: assignmentState.title,
+      description: assignmentState.description,
+      points: assignmentState.points,
+      course: cid,
+    };
+    await client.createAssignmentForCourse(cid as string, newAssignment);
+    dispatch(addAssignment(newAssignment));
+    redirect(`/Courses/${cid}/Assignments/`);
+  };
+
+  const onUpdateAssignment = async () => {
+    await client.updateAssignment(assignmentState);
+    dispatch(updateAssignment(assignmentState));
+    redirect(`/Courses/${cid}/Assignments/`);
+  };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const assignment = assignments.find((a: any) => a._id === aid);
@@ -254,10 +272,7 @@ export default function AssignmentEditor() {
             <Button
               variant="danger"
               id="wd-save-assignment"
-              onClick={() => {
-                dispatch(updateAssignment(assignmentState));
-                redirect(`/Courses/${cid}/Assignments/`);
-              }}
+              onClick={onUpdateAssignment}
             >
               Save
             </Button>
@@ -265,10 +280,7 @@ export default function AssignmentEditor() {
             <Button
               variant="danger"
               id="wd-add-assignment"
-              onClick={() => {
-                dispatch(addAssignment(assignmentState));
-                redirect(`/Courses/${cid}/Assignments/`);
-              }}
+              onClick={onCreateAssignmentForCourse}
             >
               Add
             </Button>

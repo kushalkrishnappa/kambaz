@@ -11,12 +11,12 @@ export default function KambazLayout({
   return (
     <Provider store={store}>
       <Session>
-      <div className="d-flex" id="wd-kambaz">
-        <div>
-          <KambazNavigation />
+        <div className="d-flex" id="wd-kambaz">
+          <div>
+            <KambazNavigation />
+          </div>
+          <div className="wd-main-content-offset p-3 flex-fill">{children}</div>
         </div>
-        <div className="wd-main-content-offset p-3 flex-fill">{children}</div>
-      </div>
       </Session>
     </Provider>
   );
