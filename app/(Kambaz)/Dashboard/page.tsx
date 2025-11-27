@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -29,12 +30,9 @@ import {
 } from "./Enrollments/reducer";
 import { redirect } from "next/navigation";
 export default function Dashboard() {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { courses } = useSelector((state: any) => state.coursesReducer);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { currentUser } = useSelector((state: any) => state.accountReducer);
   const dispatch = useDispatch();
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [course, setCourse] = useState<any>({
     _id: "0",
     name: "New Course",
@@ -66,7 +64,6 @@ export default function Dashboard() {
 
   const [showEnrollments, setShowEnrollments] = useState(false);
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { enrollments } = useSelector((state: any) => state.enrollmentsReducer);
 
   const onAddNewCourse = async () => {
@@ -76,7 +73,6 @@ export default function Dashboard() {
   const onDeleteCourse = async (courseId: string) => {
     const status = await client.deleteCourse(courseId);
     dispatch(
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       setCourses(courses.filter((course: any) => course._id !== courseId))
     );
   };
@@ -84,7 +80,6 @@ export default function Dashboard() {
     await client.updateCourse(course);
     dispatch(
       setCourses(
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         courses.map((c: any) => {
           if (c._id === course._id) {
             return course;
@@ -108,25 +103,23 @@ export default function Dashboard() {
   };
 
   const onAddEnrollment = async (courseId: string) => {
-    const newEnrollment = await client.enrollInCourse(
+    const newEnrollment = await client.enrollIntoCourse(
       currentUser._id,
       courseId
     );
     dispatch(addEnrollment(newEnrollment));
-    console.log(enrollments);
   };
 
-  const onRemoveEnrollment = async (enrollmentId: string) => {
-    const status = await client.unenrollFromCourse(enrollmentId);
-    dispatch(removeEnrollment({ _id: enrollmentId }));
-    console.log(enrollments);
+  const onRemoveEnrollment = async (courseId: string, userId: string) => {
+    await client.unenrollFromTheCourse(userId, courseId);
+    dispatch(removeEnrollment({ _id: `${userId}-${courseId}`, course: courseId, user: userId }));
   };
 
   return (
     <Container id="wd-dashboard">
       <h1 id="wd-dashboard-title">Dashboard</h1>
       <hr />
-      {!studentView && (
+      {adminView && (
         <>
           <h5>
             New Course
@@ -165,7 +158,6 @@ export default function Dashboard() {
       <h2 id="wd-dashboard-published">
         Published Courses (
         {
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           courses.length
         }
         )
@@ -184,7 +176,6 @@ export default function Dashboard() {
       <div id="wd-dashboard-courses">
         <Row xs={1} md={5} className="g-4">
           {courses
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             .map((course: any) => (
               <Col
                 className="wd-dashboard-course"
@@ -229,7 +220,6 @@ export default function Dashboard() {
                       )}
                       {showEnrollments &&
                         !enrollments.some(
-                          // eslint-disable-next-line @typescript-eslint/no-explicit-any
                           (enrollment: any) =>
                             enrollment.user === currentUser._id &&
                             enrollment.course === course._id
@@ -243,7 +233,6 @@ export default function Dashboard() {
                         )}
                       {showEnrollments &&
                         enrollments.some(
-                          // eslint-disable-next-line @typescript-eslint/no-explicit-any
                           (enrollment: any) =>
                             enrollment.user === currentUser._id &&
                             enrollment.course === course._id
@@ -254,11 +243,15 @@ export default function Dashboard() {
                               e.preventDefault();
                               onRemoveEnrollment(
                                 enrollments.find(
-                                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
                                   (enrollment: any) =>
                                     enrollment.user === currentUser._id &&
                                     enrollment.course === course._id
-                                )?._id
+                                )?.course,
+                                enrollments.find(
+                                  (enrollment: any) =>
+                                    enrollment.user === currentUser._id &&
+                                    enrollment.course === course._id
+                                )?.user
                               );
                             }}
                           >
