@@ -15,7 +15,7 @@ export default function Users() {
 
   const createUser = async () => {
     const user = await client.createUser({
-      firstName: "New",
+      firstName: "New ",
       lastName: `User${users.length + 1}`,
       username: `newuser${Date.now()}`,
       password: "password123",
@@ -24,16 +24,6 @@ export default function Users() {
       role: "STUDENT",
     });
     setUsers([...users, user]);
-  };
-
-  const filterUsersByName = async (name: string) => {
-    setName(name);
-    if (name) {
-      const users = await client.findUsersByPartialName(name);
-      setUsers(users);
-    } else {
-      fetchUsers();
-    }
   };
 
   const filterUsersByRole = async (role: string) => {
@@ -46,14 +36,25 @@ export default function Users() {
     }
   };
 
+  const filterUsersByName = async (name: string) => {
+    setName(name);
+    if (name) {
+      const users = await client.findUsersByPartialName(name);
+      setUsers(users);
+    } else {
+      fetchUsers();
+    }
+  };
+
   const fetchUsers = async () => {
     const users = await client.findAllUsers();
     setUsers(users);
   };
+
   useEffect(() => {
     fetchUsers();
   }, [uid]);
-  
+
   return (
     <div>
       <button
@@ -64,7 +65,7 @@ export default function Users() {
         Users
       </button>
       <h3>Users</h3>
-      {/* Filter controls */}
+      {/* Name Filter */}
       <FormControl
         onChange={(e) => filterUsersByName(e.target.value)}
         placeholder="Search people"
@@ -84,7 +85,7 @@ export default function Users() {
         <option value="ADMIN">Administrators</option>
       </select>
 
-      {/* list of users */}
+      {/* Display list of users */}
       <PeopleTable users={users} fetchUsers={fetchUsers} />
     </div>
   );

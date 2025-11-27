@@ -1,42 +1,21 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
+
 import { Container, Table } from "react-bootstrap";
 import { FaUserCircle } from "react-icons/fa";
 import PeopleDetails from "../Details";
-import Link from "next/link";
-import { useState, useEffect } from "react";
-import { useParams } from "next/navigation";
-import * as client from "../../../client";
+import { useState } from "react";
 
 export default function PeopleTable({
-  users: propsUsers,
-  fetchUsers: propsFetchUsers,
+  users = [],
+  fetchUsers,
 }: {
   users?: any[];
-  fetchUsers?: () => void;
-} = {}) {
-  const { cid } = useParams();
-  const [localUsers, setLocalUsers] = useState<any[]>([]);
+  fetchUsers: () => void;
+}) {
   const [showDetails, setShowDetails] = useState(false);
   const [showUserId, setShowUserId] = useState<string | null>(null);
 
-  const fetchLocalUsers = async () => {
-    if (cid) {
-      const enrolledUsers = await client.findUsersForCourse(cid as string);
-      setLocalUsers(enrolledUsers);
-    }
-  };
-
-  // Use props if provided, otherwise use local state
-  const users = propsUsers ?? localUsers;
-  const fetchUsers = propsFetchUsers ?? fetchLocalUsers;
-
-  useEffect(() => {
-    // Only fetch locally if no props provided
-    if (!propsUsers) {
-      fetchLocalUsers();
-    }
-  }, [cid, propsUsers]);
   return (
     <Container id="wd-people-table">
       {showDetails && (
@@ -48,6 +27,7 @@ export default function PeopleTable({
           }}
         />
       )}
+
       <Table striped>
         <thead>
           <tr>
@@ -60,7 +40,7 @@ export default function PeopleTable({
           </tr>
         </thead>
         <tbody>
-          {users.map((user: any) => (
+          {users.map((user) => (
             <tr key={user._id}>
               <td className="wd-full-name text-nowrap">
                 <span
@@ -71,7 +51,7 @@ export default function PeopleTable({
                   }}
                 >
                   <FaUserCircle className="me-2 fs-1 text-secondary" />
-                  <span className="wd-first-name">{user.firstName}</span>
+                  <span className="wd-first-name">{user.firstName}</span>{" "}
                   <span className="wd-last-name">{user.lastName}</span>
                 </span>
               </td>

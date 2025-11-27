@@ -1,11 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react";
-import { IoCloseSharp } from "react-icons/io5";
-import { FaPencil } from "react-icons/fa6";
 import { FaCheck, FaUserCircle } from "react-icons/fa";
-import { useParams } from "next/navigation";
-import Link from "next/link";
+import { IoCloseSharp } from "react-icons/io5";
 import * as client from "../../../Account/client";
+import { FaPencil } from "react-icons/fa6";
 import { FormControl } from "react-bootstrap";
 
 export default function PeopleDetails({
@@ -15,41 +13,13 @@ export default function PeopleDetails({
   uid: string | null;
   onClose: () => void;
 }) {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [role, setRole] = useState("");
-  const [editing, setEditing] = useState(false);
-  const [editingEmail, setEditingEmail] = useState(false);
-  const [editingRole, setEditingRole] = useState(false);
-  const saveUser = async () => {
-    const [firstName, lastName] = name.split(" ");
-    const updatedUser = { ...user, firstName, lastName };
-    await client.updateUser(updatedUser);
-    setUser(updatedUser);
-    setEditing(false);
-    onClose();
-  };
-
-  const saveEmail = async () => {
-    const updatedUser = { ...user, email };
-    await client.updateUser(updatedUser);
-    setUser(updatedUser);
-    setEditingEmail(false);
-  };
-
-  const saveRole = async () => {
-    const updatedUser = { ...user, role };
-    await client.updateUser(updatedUser);
-    setUser(updatedUser);
-    setEditingRole(false);
-  };
-
-  const deleteUser = async (uid: string) => {
-    await client.deleteUser(uid);
-    onClose();
-  };
-
   const [user, setUser] = useState<any>({});
+  const [name, setName] = useState("");
+  const [editing, setEditing] = useState(false);
+  const [email, setEmail] = useState("");
+  const [editingEmail, setEditingEmail] = useState(false);
+  const [role, setRole] = useState("");
+  const [editingRole, setEditingRole] = useState(false);
 
   const fetchUser = async () => {
     if (!uid) return;
@@ -61,19 +31,53 @@ export default function PeopleDetails({
     if (uid) fetchUser();
   }, [uid]);
   if (!uid) return null;
+
+  const deleteUser = async (uid: string) => {
+    await client.deleteUser(uid);
+    onClose();
+  };
+
+  const saveUser = async () => {
+    const [firstName, lastName] = name.split(" ");
+    const updatedUser = { ...user, firstName, lastName: lastName ? lastName : "" };
+    await client.updateUser(updatedUser);
+    setUser(updatedUser);
+    setEditing(false);
+    onClose();
+  };
+
+  const saveRole = async () => {
+    const updatedUser = { ...user, role };
+    await client.updateUser(updatedUser);
+    setUser(updatedUser);
+    setEditingRole(false);
+    onClose();
+  };
+
+  const saveEmail = async () => {
+    const updatedUser = { ...user, email };
+    await client.updateUser(updatedUser);
+    setUser(updatedUser);
+    setEditingEmail(false);
+    onClose();
+  };
+
   return (
     <div className="wd-people-details position-fixed top-0 end-0 bottom-0 bg-white p-4 shadow w-25">
+      {/* Close button on PeopleDetails */}
       <button
         onClick={onClose}
         className="btn position-fixed end-0 top-0 wd-close-details"
       >
         <IoCloseSharp className="fs-1" />
       </button>
+      {/* User pic inside the PeopleDetails */}
       <div className="text-center mt-2">
         <FaUserCircle className="text-secondary me-2 fs-1" />
       </div>
       <hr />
-      <div className="text-danger fs-4 wd-name mb-3">
+      {/* User name and edit controls inside the PeopleDetails */}
+      <div className="text-danger fs-4 wd-name">
         {!editing && (
           <FaPencil
             onClick={() => setEditing(true)}
@@ -104,6 +108,8 @@ export default function PeopleDetails({
           />
         )}
       </div>
+      <br />
+      {/* User roles, login ID, and section inside the PeopleDetails */}
       <div className="mb-2">
         <b>Roles:</b>
         {!editingRole && (
@@ -138,6 +144,7 @@ export default function PeopleDetails({
           </select>
         )}
       </div>
+      <br />
       <div className="mb-2">
         <b>Email:</b>{" "}
         {!editingEmail && (
@@ -154,8 +161,7 @@ export default function PeopleDetails({
         )}
         {!editingEmail && (
           <span className="wd-email" onClick={() => setEditingEmail(true)}>
-            {" "}
-            {user.email}{" "}
+            {user.email}
           </span>
         )}
         {editingEmail && (
@@ -172,19 +178,27 @@ export default function PeopleDetails({
           />
         )}
       </div>
+      <br />
+      {/* User login ID, section, and total activity inside the PeopleDetails */}
       <b>Login ID:</b> <span className="wd-login-id"> {user.loginId} </span>
       <br />
+      <br />
+      {/* User section and total activity inside the PeopleDetails */}
       <b>Section:</b> <span className="wd-section"> {user.section} </span>
       <br />
+      <br />
+      {/* User total activity inside the PeopleDetails */}
       <b>Total Activity:</b>
       <span className="wd-total-activity">{user.totalActivity}</span>
       <hr />
+      {/* Delete button on PeopleDetails */}
       <button
         onClick={() => deleteUser(uid)}
         className="btn btn-danger float-end wd-delete"
       >
         Delete
       </button>
+      {/* Cancel button on PeopleDetails */}
       <button
         onClick={onClose}
         className="btn btn-secondary float-end me-2 wd-cancel"
