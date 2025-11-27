@@ -62,7 +62,7 @@ export default function Dashboard() {
     redirect("/Account/Signin");
   }
   const studentView = currentUser.role === "STUDENT";
-  const facultyView = currentUser.role === "FACULTY";
+  const adminView = currentUser.role === "FACULTY" || currentUser.role === "ADMIN";
 
   const [showEnrollments, setShowEnrollments] = useState(false);
 
@@ -265,7 +265,7 @@ export default function Dashboard() {
                             Unenroll
                           </Button>
                         )}
-                      {facultyView && (
+                      {adminView && (
                         <>
                           <button
                             onClick={(event) => {
