@@ -4,17 +4,33 @@
 import { Container, Table } from "react-bootstrap";
 import { FaUserCircle } from "react-icons/fa";
 import PeopleDetails from "../Details";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "next/navigation";
+import { findUsersForCourse } from "../../../client";
 
 export default function PeopleTable({
   users = [],
   fetchUsers,
 }: {
   users?: any[];
-  fetchUsers: () => void;
+  fetchUsers?: () => void;
 }) {
   const [showDetails, setShowDetails] = useState(false);
   const [showUserId, setShowUserId] = useState<string | null>(null);
+  const [enrolledUsers, setEnrolledUsers] = useState<any[]>(users);
+  const { cid } = useParams();
+
+  useEffect(() => {
+    const loadUsers = async () => {
+      if (users.length === 0 && cid) {
+        const courseUsers = await findUsersForCourse(cid as string);
+        setEnrolledUsers(courseUsers?.filter((user: any) => user != null) || []);
+      } else {
+        setEnrolledUsers(users);
+      }
+    };
+    loadUsers();
+  }, [cid, users]);
 
   return (
     <Container id="wd-people-table">
@@ -23,7 +39,9 @@ export default function PeopleTable({
           uid={showUserId}
           onClose={() => {
             setShowDetails(false);
-            fetchUsers();
+            if (fetchUsers) {
+              fetchUsers();
+            }
           }}
         />
       )}
@@ -40,7 +58,7 @@ export default function PeopleTable({
           </tr>
         </thead>
         <tbody>
-          {users.map((user) => (
+          {enrolledUsers.map((user) => (
             <tr key={user._id}>
               <td className="wd-full-name text-nowrap">
                 <span
