@@ -44,12 +44,30 @@ export default function AssignmentEditor() {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (state: any) => state.accountReducer
   );
-  const viewMode = currentUser.role === "STUDENT" ? true : false;
+  const studentViewMode = currentUser.role === "STUDENT" ? true : false;
 
   const [assignmentState, setAssignmentState] = useState(
     assignment || {
       _id: aid,
       course: cid,
+      title: "",
+      description: "",
+      points: 100,
+      assignmentGroup: "ASSIGNMENTS",
+      displayGradeAs: "Percentage",
+      submissionType: "Online",
+      onlineEntryOptions: {
+        textEntry: false,
+        websiteUrl: true,
+        mediaRecordings: false,
+        studentAnnotation: false,
+        fileUpload: false,
+      },
+      assignTo: ["Everyone"],
+      dueDate: "",
+      availableDate: "",
+      availableUntil: "",
+      modules: [],
     }
   );
   return (
@@ -97,14 +115,23 @@ export default function AssignmentEditor() {
         </Col>
       </Row>
 
-      {viewMode && (
+      {!studentViewMode && (
         <>
           <Row className="mb-3">
             <FormLabel column sm={2} className="wd-assignment-details-label">
               Assignment Group
             </FormLabel>
             <Col sm={10}>
-              <FormSelect id="wd-group" defaultValue="ASSIGNMENTS">
+              <FormSelect
+                id="wd-group"
+                defaultValue={assignment?.assignmentGroup || "ASSIGNMENTS"}
+                onChange={(e) =>
+                  setAssignmentState({
+                    ...assignmentState,
+                    assignmentGroup: e.target.value,
+                  })
+                }
+              >
                 <option>ASSIGNMENTS</option>
                 <option>QUIZZES</option>
                 <option>EXAMS</option>
@@ -117,7 +144,16 @@ export default function AssignmentEditor() {
               Display Grade as
             </FormLabel>
             <Col sm={10}>
-              <FormSelect id="wd-display-grade-as">
+              <FormSelect
+                id="wd-display-grade-as"
+                defaultValue={assignment?.displayGradeAs || "Percentage"}
+                onChange={(e) =>
+                  setAssignmentState({
+                    ...assignmentState,
+                    displayGradeAs: e.target.value,
+                  })
+                }
+              >
                 <option>Percentage</option>
                 <option>Points</option>
               </FormSelect>
@@ -130,7 +166,17 @@ export default function AssignmentEditor() {
             </FormLabel>
             <Col sm={10}>
               <div className="border p-3 rounded">
-                <FormSelect id="wd-submission-type" className="mb-3">
+                <FormSelect
+                  id="wd-submission-type"
+                  className="mb-3"
+                  defaultValue={assignment?.submissionType || "Online"}
+                  onChange={(e) =>
+                    setAssignmentState({
+                      ...assignmentState,
+                      submissionType: e.target.value,
+                    })
+                  }
+                >
                   <option>Online</option>
                   <option>In-Person</option>
                 </FormSelect>
@@ -143,31 +189,91 @@ export default function AssignmentEditor() {
                       id="wd-text-entry"
                       label="Text Entry"
                       className="m-2"
+                      defaultChecked={
+                        assignment?.onlineEntryOptions?.textEntry || false
+                      }
+                      onChange={(e) =>
+                        setAssignmentState({
+                          ...assignmentState,
+                          onlineEntryOptions: {
+                            ...assignmentState.onlineEntryOptions,
+                            textEntry: e.target.checked,
+                          },
+                        })
+                      }
                     />
                     <FormCheck
                       type="checkbox"
                       id="wd-website-url"
                       label="Website URL"
                       className="m-2"
-                      defaultChecked
+                      defaultChecked={
+                        assignment?.onlineEntryOptions?.websiteUrl || true
+                      }
+                      onChange={(e) =>
+                        setAssignmentState({
+                          ...assignmentState,
+                          onlineEntryOptions: {
+                            ...assignmentState.onlineEntryOptions,
+                            websiteUrl: e.target.checked,
+                          },
+                        })
+                      }
                     />
                     <FormCheck
                       type="checkbox"
                       id="wd-media-recordings"
                       label="Media Recordings"
                       className="m-2"
+                      defaultChecked={
+                        assignment?.onlineEntryOptions?.mediaRecordings || false
+                      }
+                      onChange={(e) =>
+                        setAssignmentState({
+                          ...assignmentState,
+                          onlineEntryOptions: {
+                            ...assignmentState.onlineEntryOptions,
+                            mediaRecordings: e.target.checked,
+                          },
+                        })
+                      }
                     />
                     <FormCheck
                       type="checkbox"
                       id="wd-student-annotation"
                       label="Student Annotation"
                       className="m-2"
+                      defaultChecked={
+                        assignment?.onlineEntryOptions?.studentAnnotation ||
+                        false
+                      }
+                      onChange={(e) =>
+                        setAssignmentState({
+                          ...assignmentState,
+                          onlineEntryOptions: {
+                            ...assignmentState.onlineEntryOptions,
+                            studentAnnotation: e.target.checked,
+                          },
+                        })
+                      }
                     />
                     <FormCheck
                       type="checkbox"
                       id="wd-file-upload"
                       label="File Upload"
                       className="m-2"
+                      defaultChecked={
+                        assignment?.onlineEntryOptions?.fileUpload || false
+                      }
+                      onChange={(e) =>
+                        setAssignmentState({
+                          ...assignmentState,
+                          onlineEntryOptions: {
+                            ...assignmentState.onlineEntryOptions,
+                            fileUpload: e.target.checked,
+                          },
+                        })
+                      }
                     />
                   </div>
                 </div>
@@ -182,12 +288,27 @@ export default function AssignmentEditor() {
         </FormLabel>
         <Col sm={10}>
           <div className="border p-3 rounded">
-            {viewMode && (
+            {!studentViewMode && (
               <>
                 <FormLabel htmlFor="wd-assign-to">
                   <strong>Assign to</strong>
                 </FormLabel>
-                <FormSelect multiple id="wd-assign-to" className="mb-3">
+                <FormSelect
+                  multiple
+                  id="wd-assign-to"
+                  className="mb-3"
+                  defaultValue={assignment?.assignTo || ["Everyone"]}
+                  onChange={(e) => {
+                    const selectedOptions = Array.from(
+                      e.target.selectedOptions,
+                      (option) => option.value
+                    );
+                    setAssignmentState({
+                      ...assignmentState,
+                      assignTo: selectedOptions,
+                    });
+                  }}
+                >
                   <option>Everyone</option>
                   <option>Group 1</option>
                   <option>Group 2</option>
@@ -252,7 +373,7 @@ export default function AssignmentEditor() {
 
       <hr />
 
-      {!viewMode && (
+      {!studentViewMode && (
         <div className="text-end">
           <Button
             variant="secondary"
